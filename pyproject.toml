@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "e2e-mlproject"
+version = "0.1.0"
+description = "example project"
+authors = ["Lakitosh Singh<lakitosh@gmail.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^2.2.2"
+mlflow
+numpy
+notebook
+matplotlib
+sklearn
+joblib
+python-box
+pyYAML
