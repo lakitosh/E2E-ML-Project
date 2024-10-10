@@ -1,21 +1,32 @@
-import os
-import sys
 import logging
 from datetime import datetime
+import os
+import sys
 
-LOG_FILE = f'{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log'
+# Define log file name with correct string formatting
+LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
 
-log_path = os.path.join(os.getcwd(), 'logs', LOG_FILE)
+# Define the log directory and path
+log_dir = os.path.join(os.getcwd(), 'logs')
 
-os.makedirs(log_path, exist_ok=True)
+# Ensure that the log directory exists
+os.makedirs(log_dir, exist_ok=True)
 
-LOG_FILE_PATH = os.path.join(log_path, LOG_FILE)
+# Full path to the log file
+LOG_FILE_PATH = os.path.join(log_dir, LOG_FILE)
 
+# Configure the logging settings
 logging.basicConfig(
-    filename = LOG_FILE_PATH,
-    format = '[ %(asctime)s ] %(lineno)d %(name)s - %(levelname)s - %(message)s',
-    level = logging.INFO
+    format='[ %(asctime)s ] %(lineno)d %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO,
+    handlers=[
+        logging.FileHandler(LOG_FILE_PATH),
+        logging.StreamHandler(sys.stdout)
+    ]
 )
+
+# Create the logger object
+logger = logging.getLogger("mlProjectLogger")
 
 # if __name__ == "__main__":
 #     logging.info("Logging started")
