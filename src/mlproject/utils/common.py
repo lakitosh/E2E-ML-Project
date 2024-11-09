@@ -36,5 +36,23 @@ def save_json(path: Path, data: dict):
         json.dump(data, f, indent=4)
     
     logger.info(f"json file saved at: {path}")
-                
+    
+    
+@ensure_annotations
+def load_bin(path: Path) -> Any:
+    data = joblib.load(path) 
+    logger.info(f"json file loaded from: {path}")
+    
+
+@ensure_annotations
+def save_bin(data: any, path: Path):
+    data = joblib.dump(value = data, filename = path) 
+    logger.info(f"json file loaded from: {path}")
+    
+
+@ensure_annotations
+def get_size(path: Path) -> Any:
+    size_in_kb = round(os.path.getsize(path))
+    return f"siize in KB: {size_in_kb}"
+    
                 
