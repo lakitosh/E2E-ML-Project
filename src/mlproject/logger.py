@@ -28,5 +28,8 @@ logging.basicConfig(
 # Create the logger object
 logger = logging.getLogger("mlProjectLogger")
 
+def info(message):
+    logger.info(message)
+
 # if __name__ == "__main__":
 #     logging.info("Logging started")
